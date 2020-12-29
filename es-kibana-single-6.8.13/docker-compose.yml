@@ -2,25 +2,25 @@ version: '2.2'
 services:
   es:
     image: elasticsearch:6.8.13
-    container_name: es681301
+    container_name: ess681301
     ports:
       - 9200:9200
       - 9300:9300
     networks:
-      - es6813
+      - ess6813
     volumes:
       - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./config/jvm.options:/usr/share/elasticsearch/config/jvm.options
   kibana:
     image: kibana:6.8.13
-    container_name: kibana681301
+    container_name: kibanas681301
     environment:
-      - ELASTICSEARCH_HOSTS=http://es681301:9200
+      - ELASTICSEARCH_HOSTS=http://ess681301:9200
     ports:
       - 5601:5601
     networks:
-      - es6813
+      - ess6813
 
 networks:
-  es6813:
+  ess6813:
     driver: bridge

@@ -14,13 +14,13 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: es7101
+cluster.name: ess7101
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
-node.name: es710101
+node.name: ess710101
 #
 # Add custom attributes to the node:
 #

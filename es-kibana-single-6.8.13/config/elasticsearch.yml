@@ -14,13 +14,13 @@
 #
 # Use a descriptive name for your cluster:
 #
-#cluster.name: my-application
+cluster.name: ess6813
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
-node.name: es681301
+node.name: ess681301
 #
 # Add custom attributes to the node:
 #
@@ -61,6 +61,7 @@ network.host: 0.0.0.0
 # For more information, consult the network module documentation.
 #
 # --------------------------------- Discovery ----------------------------------
+discovery.type: single-node
 #
 # Pass an initial list of hosts to perform discovery when new node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
