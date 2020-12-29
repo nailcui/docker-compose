@@ -1,0 +1,60 @@
+version: '2.2'
+services:
+  es1:
+    image: elasticsearch:7.10.1
+    container_name: es710101
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9201:9200
+      - 9301:9300
+    networks:
+      - esc7101
+    volumes:
+      - ./es01/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es01/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
+  es2:
+    image: elasticsearch:7.10.1
+    container_name: es710102
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9202:9200
+      - 9302:9300
+    networks:
+      - esc7101
+    volumes:
+      - ./es02/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es02/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
+  es3:
+    image: elasticsearch:7.10.1
+    container_name: es710103
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9203:9200
+      - 9303:9300
+    networks:
+      - esc7101
+    volumes:
+      - ./es03/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es03/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
+  kibana:
+    image: kibana:7.10.1
+    container_name: kibana710101
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es710101:9200
+    ports:
+      - 5601:5601
+    networks:
+      - esc7101
+
+networks:
+  esc7101:
+    driver: bridge
