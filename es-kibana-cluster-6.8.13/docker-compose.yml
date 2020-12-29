@@ -1,0 +1,60 @@
+version: '2.2'
+services:
+  es1:
+    image: elasticsearch:6.8.13
+    container_name: es681301
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9201:9200
+      - 9301:9300
+    networks:
+      - esc6813
+    volumes:
+      - ./es01/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es01/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
+  es2:
+    image: elasticsearch:6.8.13
+    container_name: es681302
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9202:9200
+      - 9302:9300
+    networks:
+      - esc6813
+    volumes:
+      - ./es02/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es02/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
+  es3:
+    image: elasticsearch:6.8.13
+    container_name: es681303
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9203:9200
+      - 9303:9300
+    networks:
+      - esc6813
+    volumes:
+      - ./es03/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es03/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
+  kibana:
+    image: kibana:6.8.13
+    container_name: kibana681301
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es681301:9200
+    ports:
+      - 5601:5601
+    networks:
+      - esc6813
+
+networks:
+  esc6813:
+    driver: bridge
