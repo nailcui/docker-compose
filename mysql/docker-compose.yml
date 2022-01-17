@@ -6,7 +6,7 @@ services:
       MYSQL_ROOT_PASSWORD: "root"
       MYSQL_USER: 'root'
       MYSQL_PASS: 'root'
-    image: "mysql:5.7"
+    image: "mysql:5.7.28"
     restart: always
     volumes:
       - "./data:/var/lib/mysql"
